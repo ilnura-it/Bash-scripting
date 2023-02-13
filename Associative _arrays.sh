@@ -13,3 +13,10 @@ do
   echo "Key: $KEY"; echo "Value: ${BPM[$KEY]}"; 
   echo; 
 done
+
+currentTempo=0
+while [ $currentTempo -le 40 ]
+do
+    echo "$currentTempo BPM is too slow to play"
+    (( currentTempo+=5 ))
+done
