@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+# Take an input from user for username
+set -x
+
+#declare function to create a file
+
+create_file() {
+        touch file_new.txt
+        chmod 777 file_new.txt
+}
+
+# Prompt user's name
+
+echo "What is your name?"
+read name
+
+# check if the username is exist
+# if exists, check its home directory
+# if it exists,
+# then create file under it
+
+if $( grep -q $name /etc/passwd )
+then
+    if [[ -d /home/$name ]]
+    then
+        cd /home/$name
+        echo pwd
+        create_file
+        
+# else
+# create home directory first
+#then create file        
+        
+    else
+        sudo mkhomedir_helper $name
+        # su $name
+        cd /home/$name
+        echo pwd
+        create_file
+    fi
+else
+    sudo useradd -m $name
+    cd /home/$name
+    create_file
+fi
+
