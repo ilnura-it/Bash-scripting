@@ -33,3 +33,25 @@ do
                *) echo "I'm not sure what that is.";;
         esac
 done
+
+#############
+# 3
+#############
+
+# use -i to suggest a response "Pabu"
+read -ep "What is your pet's name? " -i "Pabu" petname
+
+echo $petname
+
+#############
+# 4
+#############
+
+read -p "What would you like for dinner?" dinner
+
+while [[ -z $dinner ]]
+do
+    read -p "Please submit your dinner order." dinner
+done
+
+echo "You will be having $dinner for dinner!"
