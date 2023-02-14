@@ -43,3 +43,10 @@ do
     echo "Installing vim packages in $i"
     sudo apt install vim
 done
+
+#########
+# Looping throught array of arguments
+for i in $@
+do
+    echo $i
+done
